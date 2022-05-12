@@ -7,6 +7,11 @@ import { TodoList } from "./components/todoList.js";
 function App() {
   const [todo, setTodo] = useState(todos);
 
+  const toggleComplete = (id) => {
+    const newTodo = [...todo];
+    newTodo[id].complete = !newTodo[id].complete;
+    setTodo(newTodo);
+  };
   return (
     <div className="App">
       <h1>Todo List App</h1>
@@ -14,7 +19,7 @@ function App() {
         <input type="text" />
         <button>Add item</button>
       </form>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} toggleComplete={toggleComplete} />
     </div>
   );
 }
