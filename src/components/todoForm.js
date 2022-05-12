@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { v4 as uuid4 } from "uuid";
 
 export const TodoForm = ({ addTodo }) => {
   const [todos, setTodos] = useState("");
@@ -11,7 +12,7 @@ export const TodoForm = ({ addTodo }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!todos) return;
-    addTodo(todos);
+    addTodo({ ...todos, id: uuid4() });
     setTodos("");
   };
 
